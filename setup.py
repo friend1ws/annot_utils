@@ -9,6 +9,7 @@ setup(name='annot_utils',
       author_email='friend1ws@gamil.com',
       url='https://github.com/friend1ws/annot_utils',
       package_dir = {'': 'lib'},
+      package_data={'': ['data/*']},
       packages=['annot_utils'],
       scripts=['annot_utils'],
       license='GPL-3'

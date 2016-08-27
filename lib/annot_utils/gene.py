@@ -4,14 +4,14 @@ import sys, gzip, subprocess
 # import pysam
 
 
-def make_gene_info(input_file, output_file, gene_model):
+def make_gene_info(input_file, output_file, gene_model, ucsc2grc):
 
     hout = open(output_file + ".unsorted.tmp", 'w')
     with gzip.open(input_file, 'r') as hin:
         for line in hin:
             F = line.rstrip('\n').split('\t')
 
-            chr = F[2]
+            chr = ucsc2grc[F[2]] if ucsc2grc is not None else F[2]
             gene_id = F[1]
             gene_start = F[4]
             gene_end = F[5]

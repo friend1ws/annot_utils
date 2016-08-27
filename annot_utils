@@ -1,0 +1,55 @@
+#! /usr/bin/env python
+
+from annot_utils.run import *
+import argparse
+
+parser = argparse.ArgumentParser(prog = "annot_utils")
+
+parser.add_argument("--version", action = "version", version = "annot_utils-0.1.0")
+
+subparsers = parser.add_subparsers()
+
+##########
+# gene 
+
+gene = subparsers.add_parser("gene",
+                              help = "make gene informatin file")
+
+gene.add_argument("ref_gene_txt", metavar = "refGene.txt.gz", default = None, type = str,
+                  help = "the path to refGene.txt.gz file downloaded from UCSC")
+
+gene.add_argument("output_path", metavar = "refGene.bed.gz", default = None, type = str,
+                  help = "the path to the output")
+
+gene.add_argument("--is_grc", default = False, action = 'store_true',
+                  help = "convert chromosome names to Genome Reference Consortium nomenclature")
+
+gene.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
+                  help = "the genome id used for selecting UCSC-GRC chromosome name corresponding files")
+
+gene.set_defaults(func = gene_main)
+
+##########
+# exon 
+
+exon = subparsers.add_parser("exon",
+                               help = "make exon informatin file")
+
+exon.add_argument("ref_gene_txt", metavar = "refGene.txt.gz", default = None, type = str,
+                       help = "the path to refGene.txt.gz file downloaded from UCSC")
+
+exon.add_argument("--is_grc", default = False, action = 'store_true',
+                       help = "convert chromosome names to Genome Reference Consortium nomenclature")
+
+exon.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
+                       help = "the genome id used for selecting UCSC-GRC chromosome name corresponding files")
+
+exon.set_defaults(func = exon_main)
+
+##########
+
+args = parser.parse_args()
+
+args.func(args)
+
+

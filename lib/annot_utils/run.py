@@ -5,12 +5,7 @@ import chr_name
 
 def gene_main(args):
 
-    ucsc2grc = None
-    if args.is_grc:
-        ucsc2grc = chr_name.make_ucsc2grc(args.genome_id)
-
-    gene.make_gene_info(args.ref_gene_txt, args.output_path, "ref", ucsc2grc)
-
+    gene.make_gene_info(args.output_path, "ref", args.genome_id, args.is_grc, args.add_ref_id)
 
 
 def exon_main(args):

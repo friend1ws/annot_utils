@@ -1,13 +1,28 @@
 #! /usr/bin/env python
 
-import sys, gzip, subprocess
+import sys, gzip, subprocess, pkg_resources 
 # import pysam
+import chr_name
 
+def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
-def make_gene_info(input_file, output_file, gene_model, ucsc2grc):
+    # create UCSC to GRC chr name corresponding table
+    ucsc2grc = None
+    if is_grc:
+        ucsc2grc = chr_name.make_ucsc2grc(genome_id)
+
+    if genome_id == "hg19":
+        ucsc_gene_file = pkg_resources.resource_filename("annot_utils", "data/hg19/refGene.txt.gz")
+    elif genome_id == "hg38":
+        ucsc_gene_file = pkg_resources.resource_filename("annot_utils", "data/hg38/refGene.txt.gz")
+    elif genome_id == "mm10":
+        ucsc_gene_file = pkg_resources.resource_filename("annot_utils", "data/mm10/refGene.txt.gz")
+    else:
+        print >> sys.stderr, "genome_id shoud be hg19, hg38 or mm10"
+        sys.exit(1)
 
     hout = open(output_file + ".unsorted.tmp", 'w')
-    with gzip.open(input_file, 'r') as hin:
+    with gzip.open(ucsc_gene_file, 'r') as hin:
         for line in hin:
             F = line.rstrip('\n').split('\t')
 
@@ -28,8 +43,10 @@ def make_gene_info(input_file, output_file, gene_model, ucsc2grc):
 
             gene_print_name = "---"
             if gene_model == "ref":
-                # gene_print_name = symbol
-                gene_print_name = symbol + '(' + gene_id + ')'
+                if add_ref_id:
+                    gene_print_name = symbol + '(' + gene_id + ')'
+                else:
+                    gene_print_name = symbol
             elif gene_model == "ens":
                 gene_print_name = gene_id
             else:

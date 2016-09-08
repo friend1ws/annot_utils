@@ -29,5 +29,7 @@ def make_ucsc2grc(genome_id):
             else:
                 ucsc2grch[F[9]] = F[4]
 
+    ucsc2grch["chrM"] = "MT"
+
     return ucsc2grch
 

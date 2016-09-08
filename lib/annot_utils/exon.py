@@ -1,13 +1,12 @@
 #! /usr/bin/env python
 
 import sys, gzip, subprocess, pkg_resources 
-# import pysam
 import chr_name, utils
 
-def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
+def make_exon_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
     # create UCSC to GRC chr name corresponding table
-    ucsc2grc = {}
+    ucsc2grc = {} 
     if is_grc:
         ucsc2grc = chr_name.make_ucsc2grc(genome_id)
 
@@ -16,23 +15,24 @@ def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
     hout = open(output_file + ".unsorted.tmp", 'w')
     with gzip.open(ucsc_gene_file, 'r') as hin:
-        for line in hin:
-            F = line.rstrip('\n').split('\t')
 
+        for line in hin:
+
+            F = line.rstrip('\n').split('\t')
+        
             chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2]
             gene_id = F[1]
-            gene_start = F[4]
-            gene_end = F[5]
-            strand = F[3]
-            symbol = F[12]
             exon_starts = F[9].split(',')
             exon_ends = F[10].split(',')
+            strand = F[3]
+            exonNum = int(F[8])
+            gene = F[1]
+            symbol = F[12]
 
-            """
             size = 0
             for i in range(len(exon_starts) - 1):
                 size = size + int(exon_ends[i]) - int(exon_starts[i])
-            """
+
 
             gene_print_name = "---"
             if gene_model == "ref":
@@ -42,12 +42,15 @@ def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
                     gene_print_name = symbol
             elif gene_model == "ens":
                 gene_print_name = gene_id
-            else:
-                print >> sys.stderr, "the value of gene_model should be ref or ens"
-                sys.exit(1)
 
-            key = chr + '\t' + gene_start + '\t' + gene_end
-            print >> hout, key + '\t' + gene_print_name + '\t' + "0" + '\t' + strand
+
+            for i in range(0, len(exon_starts) - 1):
+                key = chr + '\t' + exon_starts[i] + '\t' + exon_ends[i]
+                if strand == "+":
+                    print >> hout, key + '\t' + gene_print_name + '\t' + str(i) + '\t' + "+"
+                else:
+                    print >> hout, key + '\t' + gene_print_name + '\t' + str(exonNum - i - 1) + '\t' + "-"
+
 
     hout.close()
 

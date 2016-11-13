@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import gene, exon, junction
+import gene, exon, coding, junction
 
 def gene_main(args):
 
@@ -10,6 +10,11 @@ def gene_main(args):
 def exon_main(args):
 
     exon.make_exon_info(args.output_path, args.gene_model, args.genome_id, args.is_grc, args.add_ref_id)
+
+
+def coding_main(args):
+
+    coding.make_coding_info(args.output_path, args.gene_model, args.genome_id, args.is_grc, args.add_ref_id)
 
 
 def junction_main(args):

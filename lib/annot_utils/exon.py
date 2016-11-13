@@ -35,12 +35,12 @@ def make_exon_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
 
             gene_print_name = "---"
-            if gene_model == "ref":
+            if gene_model == "refseq":
                 if add_ref_id:
                     gene_print_name = symbol + '(' + gene_id + ')'
                 else:
                     gene_print_name = symbol
-            elif gene_model == "ens":
+            elif gene_model == "gencode":
                 gene_print_name = gene_id
 
 

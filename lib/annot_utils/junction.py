@@ -140,16 +140,22 @@ def make_junction_info(output_file, genome_id, is_grc, donor_size, acceptor_size
                 key2exon_num[key].append(str(i)) 
 
 
-    hout = open(output_file + ".tmp", 'w')
+    hout = open(output_file + ".unsorted.tmp", 'w')
     for key in sorted(key2junction):
         print >> hout, '\t'.join([key, ','.join(key2junction[key]), ','.join(key2gene_id[key]), ','.join(key2exon_num[key])])
+    hout.close()
 
+    hout = open(output_file + ".sorted.tmp", 'w')
+    subprocess.call(["sort", "-k1,1", "-k2,2n", "-k3,3n", output_file + ".unsorted.tmp"], stdout = hout)
     hout.close()
 
     hout = open(output_file, 'w')
-    subprocess.call(["sort", "-k1,1", "-k2,2n", "-k3,3n", output_file + ".tmp"], stdout = hout)
+    subprocess.check_call(["bgzip", "-f", "-c", output_file + ".sorted.tmp"], stdout = hout)
     hout.close()
 
-    subprocess.call(["rm", "-rf", output_file + ".tmp"])
+    subprocess.check_call(["tabix", "-p", "bed", output_file])
+
+    subprocess.check_call(["rm", "-rf", output_file + ".unsorted.tmp"])
+    subprocess.check_call(["rm", "-rf", output_file + ".sorted.tmp"])
 
 

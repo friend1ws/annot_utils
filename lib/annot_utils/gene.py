@@ -35,15 +35,15 @@ def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
             """
 
             gene_print_name = "---"
-            if gene_model == "ref":
+            if gene_model == "refseq":
                 if add_ref_id:
                     gene_print_name = symbol + '(' + gene_id + ')'
                 else:
                     gene_print_name = symbol
-            elif gene_model == "ens":
+            elif gene_model == "gencode":
                 gene_print_name = gene_id
             else:
-                print >> sys.stderr, "the value of gene_model should be ref or ens"
+                print >> sys.stderr, "the value of gene_model should be refseq or gencode"
                 sys.exit(1)
 
             key = chr + '\t' + gene_start + '\t' + gene_end

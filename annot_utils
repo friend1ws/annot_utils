@@ -21,7 +21,7 @@ gene.add_argument("output_path", metavar = "refGene.bed.gz", default = None, typ
 gene.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
                    help = "gene model (refGene or ensGene) (default: %(default)s)")
 
-gene.add_argument("--is_grc", default = False, action = 'store_true',
+gene.add_argument("--grc", default = False, action = 'store_true',
                   help = "convert chromosome names to Genome Reference Consortium nomenclature (default: %(default)s)")
 
 gene.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
@@ -44,7 +44,7 @@ exon.add_argument("output_path", metavar = "refGene.bed.gz", default = None, typ
 exon.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
                help = "gene model (refGene or ensGene) (default: %(default)s)")
 
-exon.add_argument("--is_grc", default = False, action = 'store_true',
+exon.add_argument("--grc", default = False, action = 'store_true',
               help = "convert chromosome names to Genome Reference Consortium nomenclature (default: %(default)s)")
 
 exon.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
@@ -67,7 +67,7 @@ coding.add_argument("output_path", metavar = "refGene.bed.gz", default = None, t
 coding.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
                     help = "gene model (refGene or ensGene) (default: %(default)s)")
 
-coding.add_argument("--is_grc", default = False, action = 'store_true',
+coding.add_argument("--grc", default = False, action = 'store_true',
                     help = "convert chromosome names to Genome Reference Consortium nomenclature (default: %(default)s)")
 
 coding.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
@@ -80,27 +80,27 @@ coding.set_defaults(func = coding_main)
 
 
 ##########
-# junction
+# boundary
 
-junction = subparsers.add_parser("junction",
-                                 help = "make junction information file")
+boundary = subparsers.add_parser("boundary",
+                                 help = "make boundary information file")
 
-junction.add_argument("output_path", metavar = "refJunc.bed.gz", default = None, type = str,
+boundary.add_argument("output_path", metavar = "refJunc.bed.gz", default = None, type = str,
                       help = "the path to the output")
 
-junction.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
+boundary.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
                       help = "the genome id used for selecting UCSC-GRC chromosome name corresponding files (default: %(default)s)")
 
-junction.add_argument("--is_grc", default = False, action = 'store_true',
+boundary.add_argument("--grc", default = False, action = 'store_true',
                       help = "convert chromosome names to Genome Reference Consortium nomenclature (default: %(default)s)")
 
-junction.add_argument("--donor_size", metavar = "donor_size", default = "2,6", type = str,
+boundary.add_argument("--donor_size", metavar = "donor_size", default = "2,6", type = str,
                       help = "splicing donor site size (exonic region size, intronic region size) (default: %(default)s)")
 
-junction.add_argument("--acceptor_size", metavar = "acceptor_size", default = "8,1", type = str,
+boundary.add_argument("--acceptor_size", metavar = "acceptor_size", default = "8,1", type = str,
                       help = "splicing donor site size (intronic region size, exonic region size) (default: %(default)s)")
 
-junction.set_defaults(func = junction_main)
+boundary.set_defaults(func = boundary_main)
 
 ##########
 args = parser.parse_args()

@@ -2,7 +2,7 @@
 
 import sys, pkg_resources
 
-def set_ucsc_gene_file(genome_id,  gene_model):
+def set_ucsc_gene_file(genome_id, gene_model):
  
     if genome_id == "hg19":
         if gene_model == "refseq":

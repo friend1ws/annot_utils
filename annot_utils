@@ -5,7 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser(prog = "annot_utils")
 
-parser.add_argument("--version", action = "version", version = "annot_utils-0.1.0")
+parser.add_argument("--version", action = "version", version = "annot_utils-0.1.0rc1")
 
 subparsers = parser.add_subparsers()
 
@@ -15,7 +15,7 @@ subparsers = parser.add_subparsers()
 gene = subparsers.add_parser("gene",
                               help = "make gene informatin file")
 
-gene.add_argument("output_path", metavar = "refGene.bed.gz", default = None, type = str,
+gene.add_argument("output_path", metavar = "gene.bed.gz", default = None, type = str,
                   help = "the path to the output")
 
 gene.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
@@ -38,7 +38,7 @@ gene.set_defaults(func = gene_main)
 exon = subparsers.add_parser("exon",
                              help = "make exon informatin file")
 
-exon.add_argument("output_path", metavar = "refGene.bed.gz", default = None, type = str,
+exon.add_argument("output_path", metavar = "exon.bed.gz", default = None, type = str,
               help = "the path to the output")
 
 exon.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
@@ -61,7 +61,7 @@ exon.set_defaults(func = exon_main)
 coding = subparsers.add_parser("coding",
                                help = "make coding informatin file")
 
-coding.add_argument("output_path", metavar = "refGene.bed.gz", default = None, type = str,
+coding.add_argument("output_path", metavar = "coding.bed.gz", default = None, type = str,
                     help = "the path to the output")
 
 coding.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
@@ -85,7 +85,7 @@ coding.set_defaults(func = coding_main)
 boundary = subparsers.add_parser("boundary",
                                  help = "make boundary information file")
 
-boundary.add_argument("output_path", metavar = "refJunc.bed.gz", default = None, type = str,
+boundary.add_argument("output_path", metavar = "boudary.bed.gz", default = None, type = str,
                       help = "the path to the output")
 
 boundary.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",

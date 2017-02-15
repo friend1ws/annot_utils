@@ -69,7 +69,7 @@ def make_boundary_info(output_file, genome_id, is_grc, donor_size, acceptor_size
     hout.close()
 
     hout = open(output_file + ".sorted.tmp", 'w')
-    subprocess.call(["sort", "-k1,1", "-k2,2n", "-k3,3n", output_file + ".unsorted.tmp"], stdout = hout)
+    subprocess.check_call(["sort", "-k1,1", "-k2,2n", "-k3,3n", output_file + ".unsorted.tmp"], stdout = hout)
     hout.close()
 
     hout = open(output_file, 'w')

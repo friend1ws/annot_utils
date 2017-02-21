@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='annot_utils',
-      version='0.1.0rc2',
+      version='0.1.0',
       description='Python programs for processing gene annotation files',
       author='Yuichi Shiraishi',
       author_email='friend1ws@gamil.com',

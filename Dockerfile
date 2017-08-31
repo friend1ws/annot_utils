@@ -26,9 +26,3 @@ RUN wget https://github.com/friend1ws/annot_utils/archive/v0.1.0.tar.gz && \
     bash prep_data.sh && \
     cd .. && \
     python setup.py build install
-
-WORKDIR /data
-
-ENTRYPOINT ["/usr/local/bin/annot_utils"] 
-CMD ["--help"]
-

@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import gene, exon, coding, boundary 
+import gene, exon, coding, boundary, simple_repeat 
 
 def gene_main(args):
 
@@ -20,5 +20,10 @@ def coding_main(args):
 def boundary_main(args):
 
     boundary.make_boundary_info(args.output_path, args.genome_id, args.grc, args.donor_size, args.acceptor_size)
+
+
+def simple_repeat_main(args):
+
+    simple_repeat.make_simple_repeat_info(args.output_path, args.genome_id, args.grc)
 
 

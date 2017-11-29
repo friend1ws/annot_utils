@@ -104,7 +104,25 @@ def main():
 
     boundary.set_defaults(func = boundary_main)
 
+
     ##########
+    # simple_repeat
+
+    simple_repeat = subparsers.add_parser("simple_repeat", help = "make simple repeat information file")
+    
+    simple_repeat.add_argument("output_path", metavar = "simple_repeat.bed.gz", default = None, type = str,
+                               help = "the path to the output")
+
+    simple_repeat.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
+                               help = "the genome id used for selecting UCSC-GRC chromosome name corresponding files (default: %(default)s)")
+
+    simple_repeat.add_argument("--grc", default = False, action = 'store_true',
+                               help = "convert chromosome names to Genome Reference Consortium nomenclature (default: %(default)s)")
+
+    simple_repeat.set_defaults(func = simple_repeat_main)
+
+    ##########
+
     args = parser.parse_args()
 
     args.func(args)

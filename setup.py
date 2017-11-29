@@ -45,6 +45,8 @@ setup(
     ],
 
     packages = find_packages(exclude = ['resource']),
+    package_data={'annot_utils': ['data/*/*']},
+
     install_requires = [],
     entry_points = {'console_scripts': ['annot_utils = annot_utils:main']}
 

@@ -36,6 +36,25 @@ mv branchpoint_mercer.grc.bed.gz ../lib/annot_utils/data/hg19
 mv branchpoint_mercer.grc.bed.gz.tbi ../lib/annot_utils/data/hg19
 rm -rf Supplemental_DataS2.bed.gz
 
+# for branch point (currently just for hg19)
+awk -F ',' 'NR>1 {OFS="\t"; $5 = $1 "_" $2 "_" $3 "_" $11; $2 = $2 - 1; print $1,$2,$3,$5,"0",$4}' gencode_v19_branchpoints.csv | \
+    sort -k1,1 -k3,3n - | bgzip -c > branchpoint_signal.bed.gz
+awk -F ',' 'NR>1 {OFS="\t"; $5 = $1 "_" $2 "_" $3 "_" $11; gsub("chr","",$1); $2 = $2 - 1; print $1,$2,$3,$5,"0",$4}' gencode_v19_branchpoints.csv | \
+    sort -k1,1 -k3,3n - | bgzip -c > branchpoint_signal.grc.bed.gz
+tabix -p bed branchpoint_signal.bed.gz
+tabix -p bed branchpoint_signal.grc.bed.gz
+mv branchpoint_signal.bed.gz ../lib/annot_utils/data/hg19
+mv branchpoint_signal.bed.gz.tbi ../lib/annot_utils/data/hg19
+mv branchpoint_signal.grc.bed.gz ../lib/annot_utils/data/hg19
+mv branchpoint_signal.grc.bed.gz.tbi ../lib/annot_utils/data/hg19
+
+
+# # for simple repeat
+# wget http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/simpleRepeat.txt.gz
+# zcat simpleRepeat.txt.gz | cut -f 2- > simpleRepeat.bed
+# tabix -f -p bed simpleRepeat.bed.gz
+# mv simpleRepeat.bed.gz ../lib/annot_utils/data/hg19
+
 # for GRCh38 (hg38)
 wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/refGene.txt.gz
 wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/wgEncodeGencodeBasicV24.txt.gz

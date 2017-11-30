@@ -3,7 +3,8 @@ python:
   - "2.7"
 befire_install:
   - wget https://github.com/samtools/htslib/releases/download/1.3.2/htslib-1.3.2.tar.bz2
-  - tar jxvf htslib-1.3.2.tar.bz2 && cd htslib-1.3.2 && make && make install
+  - tar jxvf htslib-1.3.2.tar.bz2 
+  - cd htslib-1.3.2 && make && make install && export PATH=$PATH:$PWD && cd ..
 
 script:
   - pip install .

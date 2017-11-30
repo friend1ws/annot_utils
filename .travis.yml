@@ -4,4 +4,15 @@ python:
 
 script:
   - pip install .
+
+
+  # test scripts (need to improve)
   - annot_utils gene gene.bed.gz
+  - annot_utils exon exon.bed.gz
+  - annot_utils junction junction.bed.gz
+  - annot_utils coding coding.bed.gz
+  - annot_utils boundary boundary.bed.gz
+  - annot_utils simple_repeat simple_repeat.bed.gz
+  - echo "OK"
+
+

@@ -1,5 +1,8 @@
 # annot_utils
 
+[![Build Status](https://travis-ci.org/friend1ws/annot_utils.svg?branch=master)](https://travis-ci.org/friend1ws/annot_utils)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Introduction
 `annot_utils` is a software for generating tabix-indexed annotation files, which can be shared by other software's by Y.S.
 Currently, this software support only annotatioin files for hg19 (GRCh37), hg38 (GRCh38) and mm10 (GRCm38).

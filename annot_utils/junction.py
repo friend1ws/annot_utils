@@ -1,10 +1,9 @@
 #! /usr/bin/env python
 
-import sys, gzip, subprocess 
-# import pysam
+import gzip, subprocess
 import chr_name, utils
 
-def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
+def make_junc_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
     # create UCSC to GRC chr name corresponding table
     ucsc2grc = {}
@@ -16,17 +15,18 @@ def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
     hout = open(output_file + ".unsorted.tmp", 'w')
     with gzip.open(ucsc_gene_file, 'r') as hin:
-        for line in hin:
-            F = line.rstrip('\n').split('\t')
 
+        for line in hin:
+
+            F = line.rstrip('\n').split('\t')
             chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2]
             gene_id = F[1]
-            gene_start = F[4]
-            gene_end = F[5]
-            strand = F[3]
-            symbol = F[12]
             exon_starts = F[9].split(',')
             exon_ends = F[10].split(',')
+            strand = F[3]
+            exonNum = int(F[8])
+            gene = F[1]
+            symbol = F[12]
 
 
             gene_print_name = "---"
@@ -41,8 +41,14 @@ def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
                 print >> sys.stderr, "the value of gene_model should be refseq or gencode"
                 sys.exit(1)
 
-            key = chr + '\t' + gene_start + '\t' + gene_end
-            print >> hout, key + '\t' + gene_print_name + '\t' + "0" + '\t' + strand
+
+            for i in range(0, len(exon_starts) - 2):
+                key = chr + '\t' + exon_ends[i] + '\t' + exon_starts[i + 1]
+                if strand == "+":
+                    print >> hout, key + '\t' + gene_print_name + "\t0\t+"
+                else:
+                    print >> hout, key + '\t' + gene_print_name + "\t0\t-"
+
 
     hout.close()
 
@@ -60,5 +66,4 @@ def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
     subprocess.check_call(["rm", "-rf", output_file + ".unsorted.tmp"])
     subprocess.check_call(["rm", "-rf", output_file + ".sorted.tmp"])
-
 

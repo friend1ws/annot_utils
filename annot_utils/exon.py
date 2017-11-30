@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import sys, gzip, subprocess, pkg_resources 
+import gzip, subprocess 
 import chr_name, utils
 
 def make_exon_info(output_file, gene_model, genome_id, is_grc, add_ref_id):

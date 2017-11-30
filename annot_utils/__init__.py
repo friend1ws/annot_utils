@@ -15,7 +15,7 @@ def main():
     # gene 
 
     gene = subparsers.add_parser("gene",
-                                  help = "make gene informatin file")
+                                  help = "make gene information file")
 
     gene.add_argument("output_path", metavar = "gene.bed.gz", default = None, type = str,
                       help = "the path to the output")
@@ -38,7 +38,7 @@ def main():
     # exon 
 
     exon = subparsers.add_parser("exon",
-                                 help = "make exon informatin file")
+                                 help = "make exon information file")
 
     exon.add_argument("output_path", metavar = "exon.bed.gz", default = None, type = str,
                   help = "the path to the output")
@@ -61,7 +61,7 @@ def main():
     # coding 
 
     coding = subparsers.add_parser("coding",
-                                   help = "make coding informatin file")
+                                   help = "make coding information file")
 
     coding.add_argument("output_path", metavar = "coding.bed.gz", default = None, type = str,
                         help = "the path to the output")
@@ -79,6 +79,30 @@ def main():
                         help = "add refGene ID to the annotation bed file (default: %(default)s)")
 
     coding.set_defaults(func = coding_main)
+
+
+    ##########
+    # junction
+
+    junction = subparsers.add_parser("junction",
+                                     help = "make exon-exon junction information file")
+
+    junction.add_argument("output_path", metavar = "junction.bed.gz", default = None, type = str,
+                          help = "the path to the output")
+
+    junction.add_argument("--gene_model", choices = ["refseq", "gencode"], default = "refseq",
+                          help = "gene model (refGene or ensGene) (default: %(default)s)")
+
+    junction.add_argument("--grc", default = False, action = 'store_true',
+                          help = "convert chromosome names to Genome Reference Consortium nomenclature (default: %(default)s)")
+
+    junction.add_argument("--genome_id", choices = ["hg19", "hg38", "mm10"], default = "hg19",
+                          help = "the genome id used for selecting UCSC-GRC chromosome name corresponding files (default: %(default)s)")
+
+    junction.add_argument("--add_ref_id", default = False, action = 'store_true',
+                          help = "add refGene ID to the annotation bed file (default: %(default)s)")
+
+    junction.set_defaults(func = junction_main)
 
 
     ##########

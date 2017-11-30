@@ -4,4 +4,4 @@ python:
 
 script:
   - pip install .
-
+  - annot_utils gene gene.bed.gz

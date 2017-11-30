@@ -4,13 +4,17 @@ python:
 befire_install:
   - wget https://github.com/samtools/htslib/releases/download/1.3.2/htslib-1.3.2.tar.bz2
   - tar jxvf htslib-1.3.2.tar.bz2 
-  - cd htslib-1.3.2 && make && make install && export PATH=$PATH:$PWD && cd ..
+  - cd htslib-1.3.2 && make && export PATH=$PATH:$PWD && cd ..
 
 script:
   - pip install .
 
 
   # test scripts (need to improve)
+  - tabix
+  - bgzip
+  - which tabix
+  - which bgzip 
   - annot_utils gene gene.bed.gz
   - annot_utils exon exon.bed.gz
   - annot_utils junction junction.bed.gz

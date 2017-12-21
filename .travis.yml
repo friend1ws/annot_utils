@@ -16,6 +16,4 @@ script:
   - annot_utils junction junction.bed.gz
   - annot_utils coding coding.bed.gz
   - annot_utils boundary boundary.bed.gz
-  - annot_utils simple_repeat simple_repeat.bed.gz
-
 

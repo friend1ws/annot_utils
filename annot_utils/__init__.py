@@ -7,7 +7,7 @@ def main():
 
     parser = argparse.ArgumentParser(prog = "annot_utils")
 
-    parser.add_argument("--version", action = "version", version = "annot_utils-0.2.0a1")
+    parser.add_argument("--version", action = "version", version = "annot_utils-0.2.0a3")
 
     subparsers = parser.add_subparsers()
 
@@ -129,6 +129,7 @@ def main():
     boundary.set_defaults(func = boundary_main)
 
 
+    """
     ##########
     # simple_repeat
 
@@ -146,6 +147,7 @@ def main():
     simple_repeat.set_defaults(func = simple_repeat_main)
 
     ##########
+    """
 
     args = parser.parse_args()
 

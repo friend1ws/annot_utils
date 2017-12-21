@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name = 'annot_utils',
-    version = '0.2.0a3',
+    version = '0.2.0rc1',
     description='Python programs for processing gene annotation files',
     long_description=long_description, 
     url = 'https://github.com/friend1ws/annot_utils',

@@ -7,7 +7,7 @@ def main():
 
     parser = argparse.ArgumentParser(prog = "annot_utils")
 
-    parser.add_argument("--version", action = "version", version = "annot_utils-0.2.0a3")
+    parser.add_argument("--version", action = "version", version = "annot_utils-0.2.0rc1")
 
     subparsers = parser.add_subparsers()
 

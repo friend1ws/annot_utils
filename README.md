@@ -19,9 +19,18 @@ Python (>= 2.7), `pkg_resources` packages
 
 ## Install
 
-First, download (and unzip) the software.
+``annot_utils`` is available through pypi. 
+To install, type:
 ```
 pip install annot_utils 
+```
+
+Alternatively, install from the source code:
+```
+wget https://github.com/friend1ws/annot_utils/archive/v0.2.0.tar.gz
+tar xzvf v0.2.0.tar.gz 
+cd annot_utils-0.2.0
+python setup.py build install --user
 ```
 
 ## Update databse
@@ -31,6 +40,7 @@ If you want to update the annotation files:
 cd annot_utils/resource
 bash prep_data.sh
 ```
+Then, install the software from the source code.
 
 ## Commands
 

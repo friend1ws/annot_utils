@@ -4,7 +4,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Introduction
-`annot_utils` is a software for generating tabix-indexed annotation files, which can be shared by other software's by Y.S.
+`annot_utils` is a software for generating tabix-indexed annotation files, which can be shared by other softwares by Y.S.
 Currently, this software support only annotatioin files for hg19 (GRCh37), hg38 (GRCh38) and mm10 (GRCm38).
 
 ## Dependency
@@ -13,36 +13,40 @@ Currently, this software support only annotatioin files for hg19 (GRCh37), hg38 
 
 Python (>= 2.7), `pkg_resources` packages
 
-### Software
+## Software
 
 [hstlib](http://www.htslib.org)
 
 ## Install
 
-First, download (and unzip) the software.
+``annot_utils`` is available through pypi. 
+To install, type:
 ```
-git clone https://github.com/friend1ws/annot_utils.git
+pip install annot_utils --user
 ```
 
-Then, you need to download annotation files from [UCSC genome browser](https://genome.ucsc.edu) and several other sources.
+Alternatively, install from the source code:
+```
+wget https://github.com/friend1ws/annot_utils/archive/v0.2.0.tar.gz
+tar xzvf v0.2.0.tar.gz 
+cd annot_utils-0.2.0
+python setup.py build install --user
+```
+
+## Update databse
+Currently, `annot_utils` already store annotation files from [UCSC genome browser](https://genome.ucsc.edu) and several other sources upon installation.
+If you want to update the annotation files:
 ```
 cd annot_utils/resource
 bash prep_data.sh
 ```
-
-Then, install the software.
-```
-cd ../
-python setup.py build install 
-```
-
+Then, install the software from the source code.
 
 ## Commands
 
 ### gene
 
 Generate gene annotation bed flies indexed by tabix.
-
 
 ```
 annot_utils gene [-h] 
@@ -76,6 +80,17 @@ annot_utils coding [-h]
                    coding.bed.gz
 ```
 
+### junction
+
+Generate annotated splicing junction bed files indexed by tabix.
+
+```
+annot_utils junction
+usage: annot_utils junction [-h] 
+                            [--gene_model {refseq,gencode}] [--grc]
+                            [--genome_id {hg19,hg38,mm10}] [--add_ref_id]
+                            junction.bed.gz
+```
 
 ### boundary
 

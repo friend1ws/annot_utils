@@ -24,19 +24,6 @@ wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/database/wgEncodeGencodeBasi
 mv refGene.txt.gz ../annot_utils/data/hg19
 mv wgEncodeGencodeBasicV19.txt.gz ../annot_utils/data/hg19
 
-<<_COMMENT_OUT_
-# for simple repeat
-wget http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/simpleRepeat.txt.gz
-mv simpleRepeat.txt.gz ../annot_utils/data/hg19
-
-wget http://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/simpleRepeat.txt.gz
-mv simpleRepeat.txt.gz ../annot_utils/data/hg38
-
-wget http://hgdownload.soe.ucsc.edu/goldenPath/mm10/database/simpleRepeat.txt.gz
-mv simpleRepeat.txt.gz ../annot_utils/data/mm10
-_COMMENT_OUT_
-
-
 # for GRCh38 (hg38)
 wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/refGene.txt.gz
 wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/wgEncodeGencodeBasicV24.txt.gz

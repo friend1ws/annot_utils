@@ -22,6 +22,10 @@ Python (>= 2.7), `pkg_resources` packages
 ``annot_utils`` is available through pypi. 
 To install, type:
 ```
+pip install annot_utils 
+```
+When you are not the root user, you may want to type:
+```
 pip install annot_utils --user
 ```
 

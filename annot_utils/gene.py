@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 
 import sys, gzip, subprocess 
-# import pysam
 import chr_name, utils
 
 def make_gene_info(output_file, gene_model, genome_id, is_grc, add_ref_id):

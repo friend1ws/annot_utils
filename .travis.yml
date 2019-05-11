@@ -14,31 +14,31 @@ script:
 
   # test scripts (need to improve)
   - annot_utils gene gene.bed.gz
-  - annot_utils gene gene.bed.gz --grc
-  - annot_utils gene gene.bed.gz --genome_id hg38
-  - annot_utils gene gene.bed.gz --genome_id mm10
-  - annot_utils gene gene.bed.gz --gene_model gencode
+  - annot_utils gene gene_grc.bed.gz --grc
+  - annot_utils gene gene_hg38.bed.gz --genome_id hg38
+  - annot_utils gene gene_mm10.bed.gz --genome_id mm10
+  - annot_utils gene gene_gencode.bed.gz --gene_model gencode
    
   - annot_utils exon exon.bed.gz
-  - annot_utils exon exon.bed.gz --grc
-  - annot_utils exon exon.bed.gz --genome_id hg38
-  - annot_utils exon exon.bed.gz --genome_id mm10
-  - annot_utils exon exon.bed.gz --gene_model gencode
+  - annot_utils exon exon_grc.bed.gz --grc
+  - annot_utils exon exon_hg38.bed.gz --genome_id hg38
+  - annot_utils exon exon_mm10.bed.gz --genome_id mm10
+  - annot_utils exon exon_gencode.bed.gz --gene_model gencode
 
   - annot_utils junction junction.bed.gz
-  - annot_utils junction junction.bed.gz --grc
-  - annot_utils junction junction.bed.gz --genome_id hg38
-  - annot_utils junction junction.bed.gz --genome_id mm10
-  - annot_utils junction junction.bed.gz --gene_model gencode
+  - annot_utils junction junction_grc.bed.gz --grc
+  - annot_utils junction junction_hg38.bed.gz --genome_id hg38
+  - annot_utils junction junction_mm10.bed.gz --genome_id mm10
+  - annot_utils junction junction_gencode.bed.gz --gene_model gencode
 
   - annot_utils coding coding.bed.gz
-  - annot_utils coding coding.bed.gz --grc
-  - annot_utils coding coding.bed.gz --genome_id hg38
-  - annot_utils coding coding.bed.gz --genome_id mm10
-  - annot_utils coding coding.bed.gz --gene_model gencode
+  - annot_utils coding coding_grc.bed.gz --grc
+  - annot_utils coding coding_hg38.bed.gz --genome_id hg38
+  - annot_utils coding coding_mm10.bed.gz --genome_id mm10
+  - annot_utils coding coding_gencode.bed.gz --gene_model gencode
 
   - annot_utils boundary boundary.bed.gz
-  - annot_utils boundary boundary.bed.gz --grc
-  - annot_utils boundary boundary.bed.gz --genome_id hg38
-  - annot_utils boundary boundary.bed.gz --genome_id mm10
+  - annot_utils boundary boundary_grc.bed.gz --grc
+  - annot_utils boundary boundary_hg38.bed.gz --genome_id hg38
+  - annot_utils boundary boundary_mm10.bed.gz --genome_id mm10
 

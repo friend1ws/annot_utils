@@ -13,18 +13,12 @@ def make_exon_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
     ucsc_gene_file = utils.set_ucsc_gene_file(genome_id, gene_model)
 
-    import sys
-    print(sys.version_info)
-
     hout = open(output_file + ".unsorted.tmp", 'w')
     with gzip.open(ucsc_gene_file, 'rt') as hin:
 
         for line in hin:
 
-            F = line
-            F = F.rstrip('\n')
-            F = F.split('\t')    
-            # F = line.rstrip('\n').split('\t')
+            F = line.rstrip('\n').split('\t')
         
             chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2]
             gene_id = F[1]

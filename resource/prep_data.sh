@@ -26,15 +26,15 @@ mv wgEncodeGencodeBasicV19.txt.gz ../annot_utils/data/hg19
 
 # for GRCh38 (hg38)
 wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/refGene.txt.gz
-wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/wgEncodeGencodeBasicV24.txt.gz
+wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/database/wgEncodeGencodeBasicV28.txt.gz
 mv refGene.txt.gz ../annot_utils/data/hg38
-mv wgEncodeGencodeBasicV24.txt.gz ../annot_utils/data/hg38
+mv wgEncodeGencodeBasicV28.txt.gz ../annot_utils/data/hg38
 
 # for GRCm38 (mm10)
 wget http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/refGene.txt.gz
-wget http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/wgEncodeGencodeBasicVM9.txt.gz  
+wget http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/wgEncodeGencodeBasicVM18.txt.gz  
 mv refGene.txt.gz ../annot_utils/data/mm10
-mv wgEncodeGencodeBasicVM9.txt.gz ../annot_utils/data/mm10
+mv wgEncodeGencodeBasicVM18.txt.gz ../annot_utils/data/mm10
 
 
 

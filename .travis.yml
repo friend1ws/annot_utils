@@ -14,8 +14,31 @@ script:
 
   # test scripts (need to improve)
   - annot_utils gene gene.bed.gz
+  - annot_utils gene gene.bed.gz --grc
+  - annot utils gene gene.bed.gz --genome_id hg38
+  - annot_utils gene gene.bed.gz --genome_id mm10
+  - annot_utils gene gene.bed.gz --gene_model gencode
+   
   - annot_utils exon exon.bed.gz
+  - annot_utils exon exon.bed.gz --grc
+  - annot_utils exon exon.bed.gz --genome_id hg38
+  - annot_utils exon exon.bed.gz --genome_id mm10
+  - annot_utils exon exon.bed.gz --gene_model gencode
+
   - annot_utils junction junction.bed.gz
+  - annot_utils junction junction.bed.gz --grc
+  - annot_utils junction junction.bed.gz --genome_id hg38
+  - annot_utils junction junction.bed.gz --genome_id mm10
+  - annot_utils junction junction.bed.gz --gene_model gencode
+
   - annot_utils coding coding.bed.gz
+  - annot_utils coding coding.bed.gz --grc
+  - annot_utils coding coding.bed.gz --genome_id hg38
+  - annot_utils coding coding.bed.gz --genome_id mm10
+  - annot_utils coding coding.bed.gz --gene_model gencode
+
   - annot_utils boundary boundary.bed.gz
+  - annot_utils boundary boundary.bed.gz --grc
+  - annot_utils boundary boundary.bed.gz --genome_id hg38
+  - annot_utils boundary boundary.bed.gz --genome_id mm10
 

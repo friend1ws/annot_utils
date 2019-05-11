@@ -31,8 +31,8 @@ def set_ucsc_gene_file(genome_id, gene_model):
 
 def grc_check(input_file, columns = [0], sep = '\t'):
 
-    ucsc_chr_list = ['chr' + str(x) for x in range(1, 23) + ['X', 'Y']]
-    grc_chr_list = [str(x) for x in range(1, 23) + ['X', 'Y']]
+    ucsc_chr_list = ['chr' + str(x) for x in list(range(1, 23)) + ['X', 'Y']]
+    grc_chr_list = [str(x) for x in list(range(1, 23)) + ['X', 'Y']]
  
     input_chr_list = {}
     if input_file.endswith(".bam"):

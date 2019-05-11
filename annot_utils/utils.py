@@ -53,6 +53,9 @@ def grc_check(input_file, columns = [0], sep = '\t'):
                 if col >= len(F): continue
                 if F[col] not in input_chr_list: input_chr_list[F[col]] = 1
 
+        hin.close()
+
+
     ucsc_flag = False
     grc_flag = False
     input_chr_list_ucsc = {}

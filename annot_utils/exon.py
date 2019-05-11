@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
 import gzip, subprocess 
-import chr_name, utils
+from . import chr_name, utils
 
 def make_exon_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
@@ -47,9 +48,9 @@ def make_exon_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
             for i in range(0, len(exon_starts) - 1):
                 key = chr + '\t' + exon_starts[i] + '\t' + exon_ends[i]
                 if strand == "+":
-                    print >> hout, key + '\t' + gene_print_name + '\t' + str(i) + '\t' + "+"
+                    print(key + '\t' + gene_print_name + '\t' + str(i) + '\t' + "+", file = hout)
                 else:
-                    print >> hout, key + '\t' + gene_print_name + '\t' + str(exonNum - i - 1) + '\t' + "-"
+                    print(key + '\t' + gene_print_name + '\t' + str(exonNum - i - 1) + '\t' + "-", file = hout)
 
 
     hout.close()

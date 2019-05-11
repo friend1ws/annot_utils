@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
 import gzip, subprocess
-import chr_name, utils
+from . import chr_name, utils
 
 def make_junc_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
@@ -38,16 +39,16 @@ def make_junc_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
             elif gene_model == "gencode":
                 gene_print_name = gene_id
             else:
-                print >> sys.stderr, "the value of gene_model should be refseq or gencode"
+                print("the value of gene_model should be refseq or gencode", file = sys.stderr)
                 sys.exit(1)
 
 
             for i in range(0, len(exon_starts) - 2):
                 key = chr + '\t' + exon_ends[i] + '\t' + exon_starts[i + 1]
                 if strand == "+":
-                    print >> hout, key + '\t' + gene_print_name + "\t0\t+"
+                    print(key + '\t' + gene_print_name + "\t0\t+", file = hout)
                 else:
-                    print >> hout, key + '\t' + gene_print_name + "\t0\t-"
+                    print(key + '\t' + gene_print_name + "\t0\t-", file = hout)
 
 
     hout.close()

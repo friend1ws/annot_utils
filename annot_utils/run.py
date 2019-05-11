@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import gene, exon, coding, junction, boundary, simple_repeat 
+from . import gene, exon, coding, junction, boundary, simple_repeat 
 
 def gene_main(args):
 

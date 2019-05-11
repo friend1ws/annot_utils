@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
 import sys, gzip, subprocess, pkg_resources 
-import chr_name, utils
+from . import chr_name, utils
 
 def make_simple_repeat_info(output_file, genome_id, is_grc):
 
@@ -17,7 +18,7 @@ def make_simple_repeat_info(output_file, genome_id, is_grc):
     elif genome_id == "mm10":
         simple_repeat_file = pkg_resources.resource_filename("annot_utils", "data/mm10/simpleRepeat.txt.gz")
     else:
-        print >> sys.stderr, "genome_id shoud be hg19, hg38 or mm10"
+        print("genome_id shoud be hg19, hg38 or mm10", file =  sys.stderr)
         sys.exit(1)
 
     hout = open(output_file + ".unsorted.tmp", 'w')
@@ -28,7 +29,7 @@ def make_simple_repeat_info(output_file, genome_id, is_grc):
             F = line.rstrip('\n').split('\t')
         
             chr = ucsc2grc[F[1]] if F[1] in ucsc2grc else F[1]
-            print >> hout, chr + '\t' + '\t'.join(F[2:])
+            print(chr + '\t' + '\t'.join(F[2:]), file = hout)
 
     hout.close()
 

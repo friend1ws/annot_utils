@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
 import gzip, subprocess
-import chr_name, utils
+from . import chr_name, utils
 
 def make_boundary_info(output_file, genome_id, is_grc, donor_size, acceptor_size):
 
@@ -65,7 +66,7 @@ def make_boundary_info(output_file, genome_id, is_grc, donor_size, acceptor_size
 
     hout = open(output_file + ".unsorted.tmp", 'w')
     for key in sorted(key2junction):
-        print >> hout, '\t'.join([key, ','.join(key2junction[key]), ','.join(key2gene_id[key]), ','.join(key2exon_num[key])])
+        print('\t'.join([key, ','.join(key2junction[key]), ','.join(key2gene_id[key]), ','.join(key2exon_num[key])]), file = hout)
     hout.close()
 
     hout = open(output_file + ".sorted.tmp", 'w')

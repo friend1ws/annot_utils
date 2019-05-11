@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 
+from __future__ import print_function
 import sys, pkg_resources 
 
 
@@ -12,7 +13,7 @@ def make_ucsc2grc(genome_id):
     elif genome_id == "mm10":
         sequence_report = pkg_resources.resource_filename("annot_utils", "data/mm10/GCF_000001635.20.assembly.txt")
     else:
-        print >> sys.stderr, "genome_id shoud be hg19, hg38 or mm10"
+        print("genome_id shoud be hg19, hg38 or mm10", file = sys.stderr)
         sys.exit(1)
 
 

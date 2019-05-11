@@ -2,7 +2,7 @@
 
 from annot_utils.run import *
 import argparse
-from version import __version__
+from .version import __version__
 
 def create_parser():
 

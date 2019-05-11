@@ -2,7 +2,7 @@
 
 import sys, pkg_resources, gzip, logging
 
-from logger import get_logger
+from .logger import get_logger
 logger = get_logger()
 
 def set_ucsc_gene_file(genome_id, gene_model):

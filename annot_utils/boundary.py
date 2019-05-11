@@ -18,7 +18,7 @@ def make_boundary_info(output_file, genome_id, is_grc, donor_size, acceptor_size
     acceptor_size_intron, acceptor_size_exon = [int(x) for x in acceptor_size.split(',')]
 
     key2junction, key2gene_id, key2exon_num = {}, {}, {}
-    with gzip.open(ucsc_gene_file, 'r') as hin:
+    with gzip.open(ucsc_gene_file, 'rt') as hin:
         for line in hin:
             F = line.rstrip('\n').split('\t')
 

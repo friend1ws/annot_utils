@@ -43,7 +43,7 @@ def grc_check(input_file, columns = [0], sep = '\t'):
 
     else:
         if input_file.endswith(".gz"):
-            hin = gzip.open(input_file, 'r')
+            hin = gzip.open(input_file, 'rt')
         else:
             hin = open(input_file, 'r')
 

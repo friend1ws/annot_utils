@@ -22,7 +22,7 @@ def make_simple_repeat_info(output_file, genome_id, is_grc):
         sys.exit(1)
 
     hout = open(output_file + ".unsorted.tmp", 'w')
-    with gzip.open(simple_repeat_file, 'r') as hin:
+    with gzip.open(simple_repeat_file, 'rt') as hin:
 
         for line in hin:
 

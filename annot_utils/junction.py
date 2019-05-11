@@ -15,7 +15,7 @@ def make_junc_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
 
     hout = open(output_file + ".unsorted.tmp", 'w')
-    with gzip.open(ucsc_gene_file, 'r') as hin:
+    with gzip.open(ucsc_gene_file, 'rt') as hin:
 
         for line in hin:
 

@@ -32,7 +32,7 @@ pip install annot_utils --user
 
 Alternatively, install from the source code:
 ```
-wget https://github.com/friend1ws/annot_utils/archive/v0.2.0.tar.gz
+wget https://github.com/friend1ws/annot_utils/archive/v0.3.0.tar.gz
 tar xzvf v0.3.0.tar.gz 
 cd annot_utils-0.3.0
 python setup.py build install --user

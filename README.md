@@ -10,9 +10,9 @@ Currently, this software support only annotatioin files for hg19 (GRCh37), hg38 
 
 ## Dependency
 
-### Python
+### Python packages
 
-Python (>= 2.7), `pkg_resources` packages
+`pkg_resources`
 
 ## Software
 
@@ -33,10 +33,12 @@ pip install annot_utils --user
 Alternatively, install from the source code:
 ```
 wget https://github.com/friend1ws/annot_utils/archive/v0.2.0.tar.gz
-tar xzvf v0.2.0.tar.gz 
-cd annot_utils-0.2.0
+tar xzvf v0.3.0.tar.gz 
+cd annot_utils-0.3.0
 python setup.py build install --user
 ```
+
+This package has been tested on Python 2.7, 3.5, 3.6.
 
 ## Update databse
 Currently, `annot_utils` already store annotation files from [UCSC genome browser](https://genome.ucsc.edu) and several other sources upon installation.

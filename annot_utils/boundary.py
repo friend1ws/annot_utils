@@ -22,7 +22,13 @@ def make_boundary_info(output_file, genome_id, is_grc, donor_size, acceptor_size
         for line in hin:
             F = line.rstrip('\n').split('\t')
 
-            chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2] 
+            if is_grc:
+                if F[2] not in ucsc2grc: continue
+                chr = ucsc2grc[F[2]]
+            else:
+                chr = F[2]
+            # chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2] 
+
             starts = [int(x) for x in F[9].split(',') if x != '']
             ends = [int(x) for x in F[10].split(',') if x != '']
             strand = F[3]

@@ -21,7 +21,13 @@ def make_coding_info(output_file, gene_model, genome_id, is_grc, add_ref_id):
 
             F = line.rstrip('\n').split('\t')
 
-            chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2]
+            if is_grc:
+                if F[2] not in ucsc2grc: continue
+                chr = ucsc2grc[F[2]]
+            else:
+                chr = F[2]
+            # chr = ucsc2grc[F[2]] if F[2] in ucsc2grc else F[2]
+
             gene_id = F[1]
             exon_starts = F[9].split(',')
             exon_ends = F[10].split(',')

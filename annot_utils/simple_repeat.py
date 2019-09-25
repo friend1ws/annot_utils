@@ -27,8 +27,14 @@ def make_simple_repeat_info(output_file, genome_id, is_grc):
         for line in hin:
 
             F = line.rstrip('\n').split('\t')
-        
-            chr = ucsc2grc[F[1]] if F[1] in ucsc2grc else F[1]
+
+            if is_grc:
+                if F[2] not in ucsc2grc: continue
+                chr = ucsc2grc[F[2]]
+            else:
+                chr = F[2]
+            # chr = ucsc2grc[F[1]] if F[1] in ucsc2grc else F[1]
+
             print(chr + '\t' + '\t'.join(F[2:]), file = hout)
 
     hout.close()
